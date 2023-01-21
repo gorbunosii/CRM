@@ -7,12 +7,18 @@ let money = Number(prompt(`Укажите Вашу заработную плат
 
 if (50001 <= money) {
     tax = money * 0.3;
-} else if (50000 >= money && money >= 15001) {
-    tax = money * 0.2;
-} else if (money <= 15000) {
-    tax = money * 0.13;
-} else if (money !== Number(money)) {
-    alert(`Введите сумму цифрами!` )
+}
+
+if (50000 >= money && money >= 15001) {
+ tax = money * 0.2;
+}
+
+if (money <= 15000) {
+ tax = money * 0.13;
+}
+
+if (money !== Number(money)) {
+  alert(`Введите сумму цифрами!` )
 }
 
 console.log(tax)
