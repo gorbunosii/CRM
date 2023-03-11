@@ -2,7 +2,8 @@
 
 
 let tax = 0;
-let money = Number(prompt(`Укажите Вашу заработную плату`, `50000`));
+
+
 
 
 if (50001 <= money) {
