@@ -1,9 +1,8 @@
 'use strict';
 
-let string = String(prompt(`Укажите слово`, `ПРИВЕТ МИР`));
+const string = String(prompt(`Укажите слово`, `ПРИВЕТ МИР`));
 
-const change = meaning => {
-    return meaning[0].toUpperCase() + meaning.toLowerCase().slice(1);
-}
+const change = meaning => meaning[0].toUpperCase() +
+ meaning.toLowerCase().slice(1);
 
-console.log(change(string))
+console.log(change(string));

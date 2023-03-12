@@ -45,3 +45,16 @@
 td {
     white-space: nowrap;
 }
+
+.tr-footer {
+    display: grid;
+    justify-content: end;
+    color: #6E6893;
+    background: #F4F2FF;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 15px 18px;
+    border-radius: 0 0 8px 8px;
+    gap: 50px;
+    grid-template-columns: 259px 92px 6px 6px;
+}

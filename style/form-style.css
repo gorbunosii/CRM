@@ -1,5 +1,5 @@
 .overlay {
-    display: none;
+    display: block;
     position: absolute;
     background-color: rgba(59, 67, 76, 0.5);
     width: 100%;
