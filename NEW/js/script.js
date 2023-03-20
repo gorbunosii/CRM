@@ -29,6 +29,6 @@ if (productPrice === Number(productPrice)) {
 
 
 const str = String(`На складе ` + productAmount + ` единицы товара ` +
-productName + ` на сумму ` + `$` + productPrice + ` вечно зеленных`);
+productName + ` на сумму $` + productPrice + ` вечно зеленных`);
 
 console.log(str);

@@ -5,41 +5,39 @@ const totalProduct = Number(prompt(`Введите кол-во товаров`, 
 const discount = String(prompt(`Введите промокод`, `METHED`));
 
 const calculate = (a = 0, b = 0, c = 0) => {
+  const sum = a;
 
-    let sum = a;
+  if (b > 10) {
+    b = a * 0.03;
+  }
+  if (b < 10) {
+    b = 0;
+  }
 
-    if (b > 10) {
-        b = a * 0.03;
-    }
-    if (b < 10) {
-        b = 0;
-    }
+  const sumOne = sum - b;
 
-    let sumOne = sum - b;
+  if (sumOne > 30000) {
+    a = (sumOne - 30000) * 0.15;
+  }
+  if (sumOne < 30000) {
+    a = 0;
+  }
 
-    if (sumOne > 30000) {
-        a = (sumOne - 30000) * 0.15;
-    }
-    if (sumOne < 30000) {
-        a = 0;
-    }
+  const sumTwo = sumOne - a;
 
-    let sumTwo = sumOne - a;
+  if (c === `METHED`) {
+    c = sumTwo * 0.1;
+  }
 
-    if (c === `METHED`) {
-        c = sumTwo * 0.1
-    }
+  if (c === `G3H2Z1` && sumTwo > 2000) {
+    c = 500;
+  }
+  if (c !== Number(c)) {
+    alert('Неверно введен промокод');
+    c = 0;
+  }
 
-    if (c === `G3H2Z1` && sumTwo > 2000) {
-        c = 500
-    }
-    if (c !== Number(c)) {
-        alert('Неверно введен промокод')
-        c = 0;
-    }
+  return sumTwo - c;
+};
 
-    return  sumTwo - c;
-
-}
-
-console.log(calculate( totalAmount, totalProduct, discount))
+console.log(calculate(totalAmount, totalProduct, discount));

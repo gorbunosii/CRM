@@ -1,16 +1,16 @@
 'use strict';
 
-const names= ['Noah', 'Liam', 'Mason', 'Jacob', 'Robot', 'William', 'Ethan', 'Michael', 'Alexander'];
+const names = ['Noah', 'Liam', 'Mason', 'Jacob',
+  'Robot', 'William', 'Ethan', 'Michael', 'Alexander'];
 
 const addPrefix = x => {
+  const a = [];
+  const mr = `Mr`;
 
-    let a = [];
-    let mr = `Mr`;
+  for (let i = 0; i < x.length; i++) {
+    a.push(mr + ` ` + x[i]);
+  }
+  return a;
+};
 
-    for (let i = 0; i < x.length; i++) {
-        a.push(mr + ` `+ x[i])
-    }
-    return a;
-}
-
-console.log(addPrefix(names))
+console.log(addPrefix(names));

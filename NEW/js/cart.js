@@ -7,8 +7,10 @@ const cart = {
   },
   count: 0,
   calculateItemPrice() {
-    return this.items.reduce((acc, item) =>
+    let a = this.items.reduce((acc, item) =>
       acc + (item.price * item.amount), 0);
+    a -= (a / 100 * this.discount);
+    return a;
   },
   add(item, price, amount = 1) {
     this.items.push({item, price, amount});
@@ -26,8 +28,18 @@ const cart = {
   increaseCount(amount) {
     return this.count += amount;
   },
+  set setDiscount(promocode) {
+    if (promocode === `METHED`) {
+      this.discount = 15;
+    }
+    if (promocode === `NEWYEAR`) {
+      this.discount = 21;
+    }
+  },
+  discount: 0,
 };
 
+cart.setDiscount = `NEWYEAR`;
 cart.add(`Диван`, 50000, 2);
 cart.add(`Люстра`, 5000, 10);
 cart.add(`Лампа`, 8000, 2);
