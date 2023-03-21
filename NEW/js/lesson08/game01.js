@@ -24,3 +24,20 @@ const guessNumber = () => {
 };
 
 console.log(guessNumber());
+
+// Задания на рекурсию
+
+const arr = [10, 5, 11];
+
+const foo = x => {
+  x.push(Math.floor(Math.random() * 11));
+  const sum = x.reduce((a, b) => a + b);
+
+  if (sum > 50) {
+    return x;
+  } else {
+    return foo(x);
+  }
+};
+
+console.log(foo(arr));
