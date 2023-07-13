@@ -130,3 +130,8 @@ body {
   color: #fff;
   text-align: center;
 }
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+}
