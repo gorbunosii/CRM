@@ -90,6 +90,7 @@ const data = [
             <th>Имя</th>
             <th>Фамилия</th>
             <th>Телефон</th>
+            <th>Редактирование</th>
         </tr>
         `);
 
@@ -176,7 +177,7 @@ const data = [
     const footer = createFooter();
     const buttonGroup = createButtonGroup([
       {
-        className: `btn btn-primary mr-3 js-add`,
+        className: `btn btn-primary mr-3`,
         type: `button`,
         text: `Добавить`,
       },
@@ -208,22 +209,34 @@ const data = [
 
     const tdDel = document.createElement('td');
     tdDel.classList.add('delete');
+
     const buttonDel = document.createElement('button');
     buttonDel.classList.add('del-icon');
     tdDel.append(buttonDel);
 
     const tdName = document.createElement('td');
     tdName.textContent = firstName;
+
     const tdSurname = document.createElement('td');
     tdSurname.textContent = surname;
+
     const tdPhone = document.createElement('td');
     const phoneLink = document.createElement('a');
+
+    const tdEdit = document.createElement(`td`);
+    const editButton = document.createElement('button');
+
     phoneLink.href = `tel:${phone}`;
     phoneLink.textContent = phone;
     tr.phoneLink = phoneLink;
+
     tdPhone.append(phoneLink);
 
-    tr.append(tdDel, tdName, tdSurname, tdPhone);
+    editButton.textContent = `Редактировать`;
+    editButton.classList.add(`edit-button`);
+    tdEdit.append(editButton);
+
+    tr.append(tdDel, tdName, tdSurname, tdPhone, tdEdit);
 
     return tr;
   };
