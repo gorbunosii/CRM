@@ -44,10 +44,16 @@
 
 .close {
     border: none;
-    background-color: transparent;
     position: absolute;
     top: 20px ;
     right: 30px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("/image/Back.svg");
 }
 
 .close:hover {
