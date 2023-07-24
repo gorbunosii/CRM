@@ -1,14 +1,5 @@
 'use strict';
 
-// const crmTitle = document.querySelectorAll(`.title`);
-// const crmButtonID = document.querySelectorAll(`.button-funnel`);
-// const crmColumnID = document.querySelectorAll(`.ID`);
-// const formForm = document.querySelectorAll(`.form`);
-// const formCheckbox = document.querySelectorAll(`.checkbox`);
-// const formCheckboxInput = document.querySelectorAll(`.checkbox-input`);
-// const finalPrice = document.querySelectorAll(`.final-price`);
-
-
 const btn = document.querySelector(`.table-add`);
 const formOverlay = document.querySelector(`.overlay`);
 const form = document.querySelector(`.questionnaire`);
@@ -19,16 +10,17 @@ btn.addEventListener(`click`, () => {
   form.classList.add(`is-visible`);
 });
 
-form.addEventListener(`click`, event => {
-  event.stopPropagation();
+formOverlay.addEventListener(`click`, e => {
+  // console.log(e.target);
+  const target = e.target;
+  if (target === formOverlay ||
+    target.classList.contains(`close`)) {
+    formOverlay.classList.remove(`is-visible`);
+    form.classList.remove(`is-visible`);
+  }
 });
 
-formOverlay.addEventListener(`click`, () => {
-  formOverlay.classList.remove(`is-visible`);
-  form.classList.remove(`is-visible`);
-});
-
-exit.addEventListener(`click`, () => {
-  formOverlay.classList.remove(`is-visible`);
-  form.classList.remove(`is-visible`);
-});
+// exit.addEventListener(`click`, () => {
+//   formOverlay.classList.remove(`is-visible`);
+//   form.classList.remove(`is-visible`);
+// });
