@@ -53,7 +53,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("/image/Back.svg");
+    background-image: url("../image/close.svg");
 }
 
 .close:hover {
