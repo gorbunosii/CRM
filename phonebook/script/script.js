@@ -292,7 +292,7 @@ const data = [
 
     btnDel.addEventListener(`click`, () => {
       document.querySelectorAll(`.delete`).forEach(del => {
-        del.classList.add(`is-visible`);
+        del.classList.toggle(`is-visible`);
       });
     });
 
