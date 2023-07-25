@@ -229,3 +229,44 @@ input[type='checkbox']:checked + label::before {
     background: none;
     border: none;
 }
+
+.button-form:hover {
+    border-radius: 3px;
+    box-shadow: 0 0 7px #563fe8;
+}
+
+.picture {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../image/picture.svg");
+}
+
+.pen {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../image/pen.svg");
+}
+
+.clear {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../image/clear.svg");
+}
+
+.picture-no {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../image/picture-no.svg");
+}

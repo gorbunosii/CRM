@@ -1,4 +1,6 @@
 .tr-thead {
+    display: grid;
+    grid-template-columns:152px 300px 164px 1fr 1fr 1fr 1fr 50px 50px 50px;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
@@ -25,27 +27,6 @@
     text-align: center;
 }
 
-.long {
-    width: 150px;
-    text-align: center;
-}
-
-.width {
-    padding: 15px 19px;
-}
-
-.svg {
-    width: 50px;
-}
-
-.svg:hover {
-    box-shadow: 0 0 5px #563fe8;
-}
-
-td {
-    white-space: nowrap;
-}
-
 .tr-footer {
     display: grid;
     justify-content: end;
@@ -57,4 +38,13 @@ td {
     border-radius: 0 0 8px 8px;
     gap: 50px;
     grid-template-columns: 259px 92px 6px 6px;
+}
+
+.order {
+    display: grid;
+    grid-template-columns:152px 300px 164px 1fr 1fr 1fr 1fr 50px 50px 50px;
+}
+
+.td-thead-center {
+ text-align: center;
 }
