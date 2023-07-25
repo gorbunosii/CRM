@@ -19,7 +19,7 @@ formOverlay.addEventListener(`click`, e => {
 });
 
 btnDel.addEventListener(`click`, e => {
-  if(e.target.closest(`.clear`)) {
-    e.target.closest(`.order`).remove()
+  if (e.target.closest(`.clear`)) {
+    e.target.closest(`.order`).remove();
   }
 });
