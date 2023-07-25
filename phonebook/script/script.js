@@ -87,8 +87,8 @@ const data = [
     thead.insertAdjacentHTML(`beforeend`, `
         <tr>
             <th class="delete">Удалить</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
+            <th class="table-name">Имя</th>
+            <th class="table-surname">Фамилия</th>
             <th>Телефон</th>
             <th>Редактирование</th>
         </tr>
@@ -97,6 +97,7 @@ const data = [
     const tbody = document.createElement(`tbody`);
     table.append(thead, tbody);
     table.tbody = tbody;
+    table.thead = thead;
 
     return table;
   };
@@ -197,6 +198,7 @@ const data = [
 
     return {
       list: table.tbody,
+      headList: table.thead,
       logo,
       btnAdd: buttonGroup.btns[0],
       btnDel: buttonGroup.btns[1],
@@ -271,6 +273,7 @@ const data = [
       btnAdd,
       formOverlay,
       btnDel,
+      headList,
     } = phoneBook;
 
     // функционал
@@ -300,6 +303,21 @@ const data = [
       const target = e.target;
       if (target.closest(`.del-icon`)) {
         target.closest(`.contact`).remove();
+      }
+    });
+
+    headList.addEventListener(`click`, e => {
+      const target = e.target;
+      const aaa = document.querySelector(`.table`);
+      if (target.closest(`.table-name`)) {
+        const sortTable = Array.from(aaa.rows).slice(1).sort((a, b) =>
+          (a.cells[1].innerHTML > b.cells[1].innerHTML ? 1 : -1));
+        aaa.tBodies[0].append(...sortTable);
+      }
+      if (target.closest(`.table-surname`)) {
+        const sortTable = Array.from(aaa.rows).slice(1).sort((a, b) =>
+          (a.cells[2].innerHTML > b.cells[2].innerHTML ? 1 : -1));
+        aaa.tBodies[0].append(...sortTable);
       }
     });
   };
