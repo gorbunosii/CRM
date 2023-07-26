@@ -221,16 +221,16 @@
             <div class="blank">
             <h1 class="title">Добавить товар</h1>
             <div class="line"></div>
-            <form class="form" action="https://jsonplaceholder.typicode.com/posts" method="post">
+            <form class="form" action="#" method="post">
                 <div class="specifications">
                     <div class="cell name"><label class="label" for="Имя">Наименование</label>
-                        <input class="input" type="text" name="Name" id="Имя" required>
+                        <input class="input" type="text" name="Name" id="Имя">
                     </div>
                     <div class="cell category"><label for="Категория" class="label">Категория</label>
-                        <input class="input" type="text" name="category" id="Категория" required>
+                        <input class="input" type="text" name="category" id="Категория">
                     </div>
                     <div class="cell size"><label for="ЕИ" class="label">Единицы измерения</label>
-                        <input class="input" type="text" name="unit" id="ЕИ" required>
+                        <input class="input" type="text" name="unit" id="ЕИ">
                     </div>
                     <div class="cell dis"><label for="дисконт" class="label">дисконт</label>
                         <div class="discount-group">
@@ -239,18 +239,20 @@
                         <input class="input checkbox-input" type="text" name="discount" id="дисконт" disabled></div>
                     </div>
                     <div class="cell description"><label for="описание" class="label">описание</label>
-                        <textarea class="input des" type="text" name="description" id="описание" required></textarea>
+                        <textarea class="input des" type="text" name="description" id="описание"></textarea>
                     </div>
                     <div class="cell amount"><label for="количество" class="label">количество</label>
-                        <input class="input" type="number" name="amount" id="количество" required>
+                        <input class="input" type="number" name="amount" id="количество">
                     </div>
                     <div class="cell price"><label for="цена" class="label">цена</label>
-                        <input class="input" type="number" name="price" id="цена" required>
+                        <input class="input" type="number" name="price" id="цена">
                     </div>
-                    <div class="cell img"><input class="add-file" type="file" id="file"><label class="add-label" for="file">Добавить изображение</label>
+                    <div class="cell img"><input class="add-file" type="file" id="file">
+                        <label class="add-label" for="file">Добавить изображение</label>
                     </div>
                 </div>
-                <div class="final"><p class="text final-price">Итоговая стоимость:<span class="effect"> $ 900.00</span></p><button class="accept" formtarget="_blank">Добавить товар</button></div>
+                <div class="final"><p class="text final-price">Итоговая стоимость:<span class="effect"> $ 900.00</span></p>
+                    <button class="accept">Добавить товар</button></div>
             </form>
             </div>
             </div>

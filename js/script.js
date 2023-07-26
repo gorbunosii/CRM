@@ -2,13 +2,12 @@
 
 const btnAdd = document.querySelector(`.table-add`);
 const formOverlay = document.querySelector(`.overlay`);
-const form = document.querySelector(`.questionnaire`);
 const btnDel = document.querySelector(`.table-order`);
 const checkboxtBtn = document.querySelector(`.checkbox-label`);
+const form = document.querySelector(`.form`);
 
 btnAdd.addEventListener(`click`, () => {
   formOverlay.classList.add(`is-visible`);
-  form.classList.add(`is-visible`);
 });
 
 formOverlay.addEventListener(`click`, e => {
@@ -30,4 +29,13 @@ checkboxtBtn.addEventListener(`click`, e => {
   e.target.closest(`.checkbox-label`) && checkboxInput.disabled === true ?
    checkboxInput.disabled = false : checkboxInput.disabled = true;
   checkboxInput.value = '';
+});
+
+form.addEventListener(`submit`, e => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const newContact = Object.fromEntries(formData);
+  console.log(newContact);
+  form.reset();
+  formOverlay.classList.remove(`is-visible`);
 });
