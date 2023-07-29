@@ -7,11 +7,15 @@ const checkboxtBtn = document.querySelector(`.checkbox-label`);
 const form = document.querySelector(`.form`);
 const tableTbody = document.querySelector(`.table-order`);
 const allSumCRM = document.querySelector(`.effect`);
+const sumModal = document.querySelector(`.sumModal`);
+
+let finalSumCRM = 0;
+allSumCRM.textContent = `$0`;
+let sumModalLet = 0;
+sumModal.textContent = `$0`;
 
 const createRow = ({name, category, unit, amount,
   price, discount, description, ID}) => {
-  let finalSumCRM = 0;
-
   const tr = document.createElement('tr');
   tr.classList.add(`order`);
 
@@ -64,9 +68,8 @@ const createRow = ({name, category, unit, amount,
   btnClear.classList.add(`clear`);
   tdClear.append(btnClear);
 
-  finalSumCRM += tdFinalPrice;
-
-  allSumCRM.append(finalSumCRM);
+  finalSumCRM += Number(tdFinalPrice.textContent.slice(1));
+  allSumCRM.textContent = `$${finalSumCRM}`;
 
   tr.classList.add(`order`);
   tr.append(tdID, tdName, tdCategory, tdUnit, tdAmount,
@@ -78,8 +81,8 @@ const createRow = ({name, category, unit, amount,
 const addContactPage = (contact) => {
   const randomID = (x, y) => (Math.floor(Math.random() * (y - x)) + x);
   const ID = randomID(100000000, 999999999);
-  const a = {ID};
-  const obj = Object.assign({}, contact, a);
+  const numberID = {ID};
+  const obj = {...contact, ...numberID};
   tableTbody.append(createRow(obj));
 };
 
@@ -97,6 +100,9 @@ formOverlay.addEventListener(`click`, e => {
 
 btnDel.addEventListener(`click`, e => {
   if (e.target.closest(`.clear`)) {
+    const a = e.target.closest(`.order`);
+    finalSumCRM -= Number(a.cells[6].textContent.slice(1));
+    allSumCRM.textContent = `$${finalSumCRM}`;
     e.target.closest(`.order`).remove();
   }
 });
@@ -115,4 +121,19 @@ form.addEventListener(`submit`, e => {
   addContactPage(newContact);
   form.reset();
   formOverlay.classList.remove(`is-visible`);
+});
+
+form.addEventListener(`focus`, () => {
+  form.amount.addEventListener(`change`, e => {
+    console.log(e.target.value);
+  });
+  form.price.addEventListener(`change`, e => {
+    console.log(e.target.value);
+  });
+
+  const a = form.amount * form.price;
+  console.log(a);
+
+  // sumModalLet += form.number * form.price;
+  // sumModal.textContent = `$${sumModalLet}`;
 });
