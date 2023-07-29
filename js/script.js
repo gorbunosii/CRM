@@ -6,9 +6,12 @@ const btnDel = document.querySelector(`.table-order`);
 const checkboxtBtn = document.querySelector(`.checkbox-label`);
 const form = document.querySelector(`.form`);
 const tableTbody = document.querySelector(`.table-order`);
+const allSumCRM = document.querySelector(`.effect`);
 
 const createRow = ({name, category, unit, amount,
   price, discount, description, ID}) => {
+  let finalSumCRM = 0;
+
   const tr = document.createElement('tr');
   tr.classList.add(`order`);
 
@@ -39,8 +42,35 @@ const createRow = ({name, category, unit, amount,
   tdPrice.classList.add(`td-body`);
   tdPrice.textContent = `$${price}`;
 
+  const tdFinalPrice = document.createElement('td');
+  tdFinalPrice.classList.add(`td-body`);
+  tdFinalPrice.textContent = `$${amount * price}`;
+
+  const tdPicture = document.createElement('td');
+  tdPicture.classList.add(`td-body`);
+  const btnPicture = document.createElement('button');
+  btnPicture.classList.add(`picture`);
+  tdPicture.append(btnPicture);
+
+  const tdPen = document.createElement('td');
+  tdPen.classList.add(`td-body`);
+  const btnPen = document.createElement('button');
+  btnPen.classList.add(`pen`);
+  tdPen.append(btnPen);
+
+  const tdClear = document.createElement('td');
+  tdClear.classList.add(`td-body`);
+  const btnClear = document.createElement('button');
+  btnClear.classList.add(`clear`);
+  tdClear.append(btnClear);
+
+  finalSumCRM += tdFinalPrice;
+
+  allSumCRM.append(finalSumCRM);
+
   tr.classList.add(`order`);
-  tr.append(tdID, tdName, tdCategory, tdUnit, tdAmount, tdPrice);
+  tr.append(tdID, tdName, tdCategory, tdUnit, tdAmount,
+      tdPrice, tdFinalPrice, tdPicture, tdPen, tdClear);
 
   return tr;
 };
@@ -50,7 +80,6 @@ const addContactPage = (contact) => {
   const ID = randomID(100000000, 999999999);
   const a = {ID};
   const obj = Object.assign({}, contact, a);
-  console.log(obj);
   tableTbody.append(createRow(obj));
 };
 
