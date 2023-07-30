@@ -11,7 +11,6 @@ const sumModal = document.querySelector(`.sumModal`);
 
 let finalSumCRM = 0;
 allSumCRM.textContent = `$0`;
-let sumModalLet = 0;
 sumModal.textContent = `$0`;
 
 const createRow = ({name, category, unit, amount,
@@ -121,19 +120,9 @@ form.addEventListener(`submit`, e => {
   addContactPage(newContact);
   form.reset();
   formOverlay.classList.remove(`is-visible`);
+  sumModal.textContent = `$0`;
 });
 
-form.addEventListener(`focus`, () => {
-  form.amount.addEventListener(`change`, e => {
-    console.log(e.target.value);
-  });
-  form.price.addEventListener(`change`, e => {
-    console.log(e.target.value);
-  });
-
-  const a = form.amount * form.price;
-  console.log(a);
-
-  // sumModalLet += form.number * form.price;
-  // sumModal.textContent = `$${sumModalLet}`;
+form.addEventListener(`change`, () => {
+  sumModal.textContent = `$${form.amount.value * form.price.value}`;
 });
