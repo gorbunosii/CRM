@@ -1,33 +1,28 @@
 'use strict';
 
-const data = [
-  {
-    name: 'Иван',
-    surname: 'Петров',
-    phone: '+79514545454',
-  },
-  {
-    name: 'Игорь',
-    surname: 'Семёнов',
-    phone: '+79999999999',
-  },
-  {
-    name: 'Семён',
-    surname: 'Иванов',
-    phone: '+79800252525',
-  },
-  {
-    name: 'Мария',
-    surname: 'Попова',
-    phone: '+79876543210',
-  },
-];
+let data = JSON.parse(localStorage.getItem('users')) || [];
 
 {
-  const addContactData = contact => {
-    data.push(contact);
-    console.log(`data`, data);
+  const getStorage = (ar) => {
+    const arr = JSON.parse(localStorage.getItem(ar)) || [];
+    return arr;
   };
+
+  const setStorage = (contact) => {
+    data = getStorage(`users`);
+    data.push(contact);
+    localStorage.setItem(`users`, JSON.stringify(data));
+  };
+
+  const removeStorage = (phone) => {
+    for (let i = data.length; i--;) {
+      if (data[i].phone === phone) {
+        data.splice(i, 1);
+      }
+    }
+    localStorage.setItem(`users`, JSON.stringify(data));
+  };
+
   const createContainer = () => {
     const container = document.createElement(`div`);
     container.classList.add(`container`);
@@ -300,6 +295,8 @@ const data = [
 
     list.addEventListener(`click`, e => {
       const target = e.target;
+      const a = target.closest(`.contact`);
+      removeStorage(a.cells[3].textContent);
       if (target.closest(`.del-icon`)) {
         target.closest(`.contact`).remove();
       }
@@ -334,7 +331,7 @@ const data = [
 
       const newContact = Object.fromEntries(formData);
       addContactPage(newContact, list);
-      addContactData(newContact);
+      setStorage(newContact);
       form.reset();
       closeModal();
     });
