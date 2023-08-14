@@ -1,13 +1,10 @@
-'use strict';
-
-const {
-    createRow,
-} = require('./createElements');
+import moduleStorage from './serviceStorage.js';
+import * as create from './createElements.js';
 
 const {
   setStorage,
   removeStorage,
-} = require('./serviceStorage');
+} = moduleStorage;
 
 const hoverRow = (allRow, logo) => {
   const text = logo.textContent;
@@ -80,7 +77,7 @@ const sortControl = (headList) => {
 };
 
 const addContactPage = (contact, list) => {
-  list.append(createRow(contact));
+  list.append(create.createRow(contact));
 };
 
 const formControl = (form, list, closeModal) => {
@@ -96,7 +93,7 @@ const formControl = (form, list, closeModal) => {
   });
 };
 
-module.exports = {
+export default {
   hoverRow,
   moduleControl,
   deleteControl,

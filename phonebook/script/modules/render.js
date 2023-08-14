@@ -1,24 +1,12 @@
-'use strict';
+import * as create from './createElements.js';
 
-const {
-  createHeader,
-  createLogo,
-  createMain,
-  createButtonGroup,
-  createTable,
-  createForm,
-  createFooter,
-  createSave,
-  createRow,
-} = require('./createElements');
-
-const renderPhoneBook = (app, title) => {
-  const header = createHeader();
-  const logo = createLogo(title);
-  const save = createSave(title);
-  const main = createMain();
-  const footer = createFooter();
-  const buttonGroup = createButtonGroup([
+export const renderPhoneBook = (app, title) => {
+  const header = create.createHeader();
+  const logo = create.createLogo(title);
+  const save = create.createSave(title);
+  const main = create.createMain();
+  const footer = create.createFooter();
+  const buttonGroup = create.createButtonGroup([
     {
       className: `btn btn-primary mr-3`,
       type: `button`,
@@ -30,8 +18,8 @@ const renderPhoneBook = (app, title) => {
       text: `Удалить`,
     },
   ]);
-  const table = createTable();
-  const {form, overlay} = createForm();
+  const table = create.createTable();
+  const {form, overlay} = create.createForm();
 
   header.headerContainer.append(logo);
   main.mainContainer.append(buttonGroup.btnWrapper, table, overlay);
@@ -49,13 +37,8 @@ const renderPhoneBook = (app, title) => {
   };
 };
 
-const renderContacts = (elem, data) => {
-  const alllRow = data.map(createRow);
+export const renderContacts = (elem, data) => {
+  const alllRow = data.map(create.createRow);
   elem.append(...alllRow);
   return alllRow;
-};
-
-module.exports = {
-  renderPhoneBook,
-  renderContacts,
 };

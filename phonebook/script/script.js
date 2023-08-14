@@ -1,21 +1,17 @@
-'use strict';
+import modulControl from './modules/control.js';
+import {renderPhoneBook, renderContacts} from './modules/render.js';
+import moduleStorage from './modules/serviceStorage.js';
 
 const {
   hoverRow,
   moduleControl,
   deleteControl,
   sortControl,
-  formControl,
-} = require('./modules/control');
+  formControl} = modulControl;
 
 const {
-  renderPhoneBook,
-  renderContacts,
-} = require('./modules/render');
-
-const {
-data,
-} = require('./modules/serviceStorage');
+  data,
+} = moduleStorage;
 
 {
   const init = (selectorApp, title) => {

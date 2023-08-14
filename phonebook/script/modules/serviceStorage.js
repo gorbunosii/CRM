@@ -1,5 +1,3 @@
-'use strict';
-
 let data = JSON.parse(localStorage.getItem('users')) || [];
 
 const getStorage = (ar) => JSON.parse(localStorage.getItem(ar)) || [];
@@ -19,9 +17,9 @@ const removeStorage = (phone) => {
   localStorage.setItem(`users`, JSON.stringify(data));
 };
 
-module.exports = {
-data,
-getStorage,
-setStorage,
-removeStorage,
+export default {
+  data,
+  getStorage,
+  setStorage,
+  removeStorage,
 };
