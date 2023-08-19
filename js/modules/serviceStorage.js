@@ -1,3 +1,6 @@
+import {renderCRM} from './render.js';
+
+const {allSumCRM} = renderCRM();
 
 let finalSumCRM = Number(localStorage.getItem('sum')) || 0;
 

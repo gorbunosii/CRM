@@ -1,5 +1,7 @@
+import serviceStorage from './serviceStorage.js';
+const {finalSumCRM} = serviceStorage;
 
-const renderCRM = () => {
+export const renderCRM = () => {
   const btnAdd = document.querySelector(`.table-add`);
   const formOverlay = document.querySelector(`.overlay`);
   const btnDel = document.querySelector(`.table-order`);
@@ -10,4 +12,15 @@ const renderCRM = () => {
   const allSumCRM = document.querySelector(`.effect`);
   allSumCRM.textContent = `$${finalSumCRM}`;
   sumModal.textContent = `$0`;
+
+  return {
+    btnAdd,
+    formOverlay,
+    btnDel,
+    checkboxtBtn,
+    form,
+    tableTbody,
+    sumModal,
+    allSumCRM,
+  };
 };
