@@ -1,5 +1,5 @@
-import serviceStorage from './serviceStorage.js';
-const {finalSumCRM} = serviceStorage;
+import createElem from './createElements.js';
+const {createRow} = createElem;
 
 export const renderCRM = () => {
   const btnAdd = document.querySelector(`.table-add`);
@@ -9,8 +9,6 @@ export const renderCRM = () => {
   const form = document.querySelector(`.form`);
   const tableTbody = document.querySelector(`.table-order`);
   const sumModal = document.querySelector(`.sumModal`);
-  const allSumCRM = document.querySelector(`.effect`);
-  allSumCRM.textContent = `$${finalSumCRM}`;
   sumModal.textContent = `$0`;
 
   return {
@@ -21,6 +19,17 @@ export const renderCRM = () => {
     form,
     tableTbody,
     sumModal,
-    allSumCRM,
   };
+};
+
+export const renderContacts = (tableTbody, data) => {
+  const alllRow = data.map(createRow);
+  tableTbody.append(...alllRow);
+};
+
+export const sumContacts = (data) => {
+  const allSumCRM = document.querySelector(`.effect`);
+  const sumCRM = data.reduce((sum, elem) =>
+    sum + (elem.amount * elem.price), 0);
+  allSumCRM.textContent = `$${sumCRM}`;
 };

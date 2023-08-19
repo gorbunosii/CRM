@@ -1,13 +1,12 @@
-import serviceStorage from './serviceStorage.js';
-import createElem from './createElements.js';
-let {finalSumCRM} = serviceStorage;
-const {createRow} = createElem;
+import modulStorage from './serviceStorage.js';
+const {data, setTableStorage, removeStorage} = modulStorage;
+import {renderContacts, sumContacts} from './render.js';
 
 const deleteControl = (btnDel) => {
   btnDel.addEventListener(`click`, e => {
     if (e.target.closest(`.clear`)) {
       const a = e.target.closest(`.order`);
-      finalSumCRM -= Number(a.cells[6].textContent.slice(1));
+      removeStorage(a.cells[1].textContent);
       e.target.closest(`.order`).remove();
     }
   });
@@ -27,15 +26,7 @@ const visibleControl = (btnAdd, formOverlay) => {
   });
 };
 
-const addContactPage = (contact, tableTbody) => {
-  const randomID = (x, y) => (Math.floor(Math.random() * (y - x)) + x);
-  const ID = randomID(100000000, 999999999);
-  const numberID = {ID};
-  const obj = {...contact, ...numberID};
-  tableTbody.append(createRow(obj));
-};
-
-const formControl = (checkboxtBtn, form, sumModal, formOverlay) => {
+const formControl = (checkboxtBtn, form, sumModal, formOverlay, tableTbody) => {
   checkboxtBtn.addEventListener(`click`, e => {
     const checkboxInput = document.querySelector(`.checkbox-input`);
         e.target.closest(`.checkbox-label`) && checkboxInput.disabled === true ?
@@ -47,7 +38,13 @@ const formControl = (checkboxtBtn, form, sumModal, formOverlay) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const newContact = Object.fromEntries(formData);
-    addContactPage(newContact);
+    const randomID = (x, y) => (Math.floor(Math.random() * (y - x)) + x);
+    const ID = randomID(100000000, 999999999);
+    const numberID = {ID};
+    const obj = {...newContact, ...numberID};
+    setTableStorage(obj);
+    renderContacts(tableTbody, [obj]);
+    sumContacts(data);
     form.reset();
     formOverlay.classList.remove(`is-visible`);
     sumModal.textContent = `$0`;
@@ -61,6 +58,5 @@ const formControl = (checkboxtBtn, form, sumModal, formOverlay) => {
 export default {
   deleteControl,
   visibleControl,
-  addContactPage,
   formControl,
 };

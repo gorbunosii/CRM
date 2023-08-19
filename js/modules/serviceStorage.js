@@ -1,17 +1,22 @@
-import {renderCRM} from './render.js';
+let data = JSON.parse(localStorage.getItem('users')) || [];
 
-const {allSumCRM} = renderCRM();
+const setTableStorage = (contact) => {
+  data = JSON.parse(localStorage.getItem(`users`)) || [];
+  data.push(contact);
+  localStorage.setItem(`users`, JSON.stringify(data));
+};
 
-let finalSumCRM = Number(localStorage.getItem('sum')) || 0;
-
-const setStorage = (meaning) => {
-  finalSumCRM = Number(localStorage.getItem('sum')) || 0;
-  finalSumCRM += meaning;
-  localStorage.setItem(`sum`, finalSumCRM);
-  allSumCRM.textContent = `$${finalSumCRM}`;
+const removeStorage = (name) => {
+  for (let i = data.length; i--;) {
+    if (data[i].name === name) {
+      data.splice(i, 1);
+    }
+  }
+  localStorage.setItem(`users`, JSON.stringify(data));
 };
 
 export default {
-  finalSumCRM,
-  setStorage,
+  data,
+  setTableStorage,
+  removeStorage,
 };

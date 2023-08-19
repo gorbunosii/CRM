@@ -1,7 +1,3 @@
-import serviceStorage from './serviceStorage.js';
-
-const {setStorage} = serviceStorage;
-
 const createRow = ({name, category, unit, amount,
   price, discount, description, ID}) => {
   const tr = document.createElement('tr');
@@ -55,8 +51,6 @@ const createRow = ({name, category, unit, amount,
   const btnClear = document.createElement('button');
   btnClear.classList.add(`clear`);
   tdClear.append(btnClear);
-
-  setStorage(Number(tdFinalPrice.textContent.slice(1)));
 
   tr.classList.add(`order`);
   tr.append(tdID, tdName, tdCategory, tdUnit, tdAmount,
