@@ -5,15 +5,7 @@ let {finalSumCRM} = serviceStorage;
 
 const {createRow} = createElem;
 
-const btnAdd = document.querySelector(`.table-add`);
-const formOverlay = document.querySelector(`.overlay`);
-const btnDel = document.querySelector(`.table-order`);
-const checkboxtBtn = document.querySelector(`.checkbox-label`);
-const form = document.querySelector(`.form`);
-const tableTbody = document.querySelector(`.table-order`);
-const sumModal = document.querySelector(`.sumModal`);
 
-sumModal.textContent = `$0`;
 
 const addContactPage = (contact) => {
   const randomID = (x, y) => (Math.floor(Math.random() * (y - x)) + x);
@@ -65,6 +57,7 @@ form.addEventListener(`change`, () => {
 });
 
 const init = () => {
+  
 };
 
 init();

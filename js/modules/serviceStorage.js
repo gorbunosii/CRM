@@ -1,6 +1,5 @@
-const allSumCRM = document.querySelector(`.effect`);
+
 let finalSumCRM = Number(localStorage.getItem('sum')) || 0;
-allSumCRM.textContent = `$${finalSumCRM}`;
 
 const setStorage = (meaning) => {
   finalSumCRM = Number(localStorage.getItem('sum')) || 0;

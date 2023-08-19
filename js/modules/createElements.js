@@ -65,6 +65,7 @@ const createRow = ({name, category, unit, amount,
   return tr;
 };
 
+
 export default {
   createRow,
 };
