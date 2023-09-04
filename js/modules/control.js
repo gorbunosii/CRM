@@ -9,6 +9,10 @@ const deleteControl = (btnDel) => {
       removeStorage(a.cells[1].textContent);
       e.target.closest(`.order`).remove();
     }
+
+    if (e.target.closest(`.picture`)) {
+      const win = open();
+    }
   });
 };
 
