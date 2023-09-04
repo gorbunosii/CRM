@@ -13,9 +13,9 @@ const deleteControl = (btnDel) => {
     if (e.target.closest(`.picture`)) {
       const width = screen.width / 2 - 300;
       const height = screen.height / 2 - 300;
-      open(`about:blank`, `_blank`, `top=${height},
+      const url = e.target.closest(`.picture`).dataset.pic;
+      open(url, `_blank`, `top=${height},
        left=${width}, width=600, height=600`);
-      console.log(e.target.closest(`.picture`).dataset);
     }
   });
 };
