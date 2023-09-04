@@ -38,6 +38,7 @@ const createRow = ({name, category, unit, amount,
   tdPicture.classList.add(`td-body`);
   const btnPicture = document.createElement('button');
   btnPicture.classList.add(`picture`);
+  btnPicture.dataset.pic = `../../image/test.jpg`;
   tdPicture.append(btnPicture);
 
   const tdPen = document.createElement('td');
