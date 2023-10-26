@@ -9,6 +9,8 @@ export const renderCRM = () => {
   const form = document.querySelector(`.form`);
   const tableTbody = document.querySelector(`.table-order`);
   const sumModal = document.querySelector(`.sumModal`);
+  const URL = `https://lydian-romantic-litter.glitch.me/api/goods`;
+  const error = document.querySelector(`.error`);
   sumModal.textContent = `$0`;
 
   return {
@@ -18,18 +20,24 @@ export const renderCRM = () => {
     checkboxtBtn,
     form,
     tableTbody,
+    URL,
+    error,
     sumModal,
   };
 };
 
-export const renderContacts = (tableTbody, data) => {
-  const alllRow = data.map(createRow);
+export const renderContacts = (x, tableTbody, data) => {
+  if (x) {
+    console.warn(x, data);
+    alert(`Что-то пошло не так...`);
+  }
+  const alllRow = data.goods.map(createRow);
   tableTbody.append(...alllRow);
 };
 
 export const sumContacts = (data) => {
   const allSumCRM = document.querySelector(`.effect`);
-  const sumCRM = data.reduce((sum, elem) =>
-    sum + (elem.amount * elem.price), 0);
+  const sumCRM = data.goods.reduce((sum, elem) =>
+    sum + (elem.count * elem.price), 0);
   allSumCRM.textContent = `$${sumCRM}`;
 };

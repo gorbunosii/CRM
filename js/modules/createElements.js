@@ -1,5 +1,5 @@
-const createRow = ({name, category, unit, amount,
-  price, discount, description, ID}) => {
+export const createRow = ({title, category, units, count,
+  price, image, description, discount, id}) => {
   const tr = document.createElement('tr');
   tr.classList.add(`order`);
 
@@ -7,12 +7,12 @@ const createRow = ({name, category, unit, amount,
   tdID.classList.add(`td-body`);
   const spanID = document.createElement(`span`);
   spanID.classList.add(`vendor-code__id`);
-  spanID.textContent = ID;
+  spanID.textContent = id;
   tdID.append(spanID);
 
   const tdName = document.createElement('td');
   tdName.classList.add(`td-body`);
-  tdName.textContent = name;
+  tdName.textContent = title;
 
   const tdCategory = document.createElement('td');
   tdCategory.classList.add(`td-body`);
@@ -20,11 +20,11 @@ const createRow = ({name, category, unit, amount,
 
   const tdUnit = document.createElement('td');
   tdUnit.classList.add(`td-body`);
-  tdUnit.textContent = unit;
+  tdUnit.textContent = units;
 
   const tdAmount = document.createElement('td');
   tdAmount.classList.add(`td-body`);
-  tdAmount.textContent = amount;
+  tdAmount.textContent = count;
 
   const tdPrice = document.createElement('td');
   tdPrice.classList.add(`td-body`);
@@ -32,13 +32,13 @@ const createRow = ({name, category, unit, amount,
 
   const tdFinalPrice = document.createElement('td');
   tdFinalPrice.classList.add(`td-body`);
-  tdFinalPrice.textContent = `$${amount * price}`;
+  tdFinalPrice.textContent = `$${count * price}`;
 
   const tdPicture = document.createElement('td');
   tdPicture.classList.add(`td-body`);
   const btnPicture = document.createElement('button');
   btnPicture.classList.add(`picture`);
-  btnPicture.dataset.pic = `../../image/test.jpg`;
+  btnPicture.dataset.pic = image;
   tdPicture.append(btnPicture);
 
   const tdPen = document.createElement('td');

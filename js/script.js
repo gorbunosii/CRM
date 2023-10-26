@@ -1,7 +1,7 @@
 import modulControl from './modules/control.js';
-import {renderCRM, renderContacts, sumContacts} from './modules/render.js';
+import {renderCRM, renderContacts} from './modules/render.js';
 import modulStorage from './modules/serviceStorage.js';
-const {data} = modulStorage;
+const {fetchRequest} = modulStorage;
 
 const {
   deleteControl,
@@ -15,15 +15,19 @@ const init = () => {
     btnDel,
     checkboxtBtn,
     form,
+    URL,
     tableTbody,
+    error,
     sumModal,
   } = renderCRM();
 
-  renderContacts(tableTbody, data);
+  fetchRequest(URL, {
+    method: `get`,
+    callback: renderContacts,
+  });
   deleteControl(btnDel);
-  visibleControl(btnAdd, formOverlay);
-  formControl(checkboxtBtn, form, sumModal, formOverlay, tableTbody);
-  sumContacts(data);
+  visibleControl(btnAdd, formOverlay, error);
+  formControl(checkboxtBtn, form, sumModal, formOverlay, tableTbody, error);
 };
 
 init();

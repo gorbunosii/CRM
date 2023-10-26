@@ -89,13 +89,13 @@
             <form class="form" name="calculator" action="#" method="post">
                 <div class="specifications">
                     <div class="cell name"><label class="label" for="Имя">Наименование</label>
-                        <input class="input" type="text" name="name" id="Имя" required>
+                        <input class="input" type="text" name="title" id="Имя" required>
                     </div>
                     <div class="cell category"><label for="Категория" class="label">Категория</label>
                         <input class="input" type="text" name="category" id="Категория" required>
                     </div>
                     <div class="cell size"><label for="ЕИ" class="label">Единицы измерения</label>
-                        <input class="input" type="text" name="unit" id="ЕИ" required>
+                        <input class="input" type="text" name="units" id="ЕИ" required>
                     </div>
                     <div class="cell dis"><label for="дисконт" class="label">дисконт</label>
                         <div class="discount-group">
@@ -107,7 +107,7 @@
                         <textarea class="input des" type="text" name="description" id="описание" required></textarea>
                     </div>
                     <div class="cell amount"><label for="количество" class="label">количество</label>
-                        <input class="input" type="number" name="amount" value="0" id="количество" required>
+                        <input class="input" type="number" name="count" value="0" id="количество" required>
                     </div>
                     <div class="cell price"><label for="цена" class="label">цена</label>
                         <input class="input" type="number" name="price" value="0" id="цена" required>
@@ -120,6 +120,10 @@
                     <button class="accept">Добавить товар</button></div>
             </form>
             </div>
+            </div>
+            <div class="error">
+                <button class="close-error" type="submit"></button>
+                <p class="error-color"></p>
             </div>
         </div>
 </body>
