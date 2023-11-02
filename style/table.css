@@ -48,3 +48,15 @@
 .td-thead-center {
  text-align: center;
 }
+
+.line {
+    width: 100%;
+    border-top: 1px solid #C6C2DE;
+    margin-bottom: 21px;
+}
+
+.effect {
+    color: #6D5BD0;
+    font-size: 20px;
+    font-weight: 700;
+}

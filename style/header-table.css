@@ -95,3 +95,53 @@
     top: 8px;
     left: 10px;
 }
+
+.button-form {
+    background: none;
+    border: none;
+}
+
+.button-form:hover {
+    border-radius: 3px;
+    box-shadow: 0 0 7px #563fe8;
+}
+
+
+.picture {
+    border: none;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../image/picture.svg");
+}
+
+.pen {
+    border: none;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../image/pen.svg");
+}
+
+.clear {
+    border: none;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../image/clear.svg");
+}
+
+.picture-no {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../image/picture-no.svg");
+}

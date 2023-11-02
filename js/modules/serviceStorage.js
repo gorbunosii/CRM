@@ -37,26 +37,23 @@ const fetchRequest = async (url, {
       const data = await response.json();
       if (options.method === `get`) {
         sumContacts(data);
-      } else {
-        console.log(data);
       }
 
       const {
         tableTbody,
       } = renderCRM();
 
-      if (callback) callback(null, tableTbody, data);
+      if (callback) return callback(null, tableTbody, data);
       return;
     }
 
     throw new Error(response.status);
   } catch (err) {
-    callback(err);
+    return callback(err);
   }
 };
 
 export default {
-  data,
   fetchRequest,
   setTableStorage,
   removeStorage,

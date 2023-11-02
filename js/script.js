@@ -5,29 +5,22 @@ const {fetchRequest} = modulStorage;
 
 const {
   deleteControl,
-  visibleControl,
-  formControl} = modulControl;
+  visibleControl} = modulControl;
 
 const init = () => {
   const {
     btnAdd,
-    formOverlay,
     btnDel,
-    checkboxtBtn,
-    form,
-    URL,
     tableTbody,
-    error,
-    sumModal,
+    URL,
   } = renderCRM();
 
   fetchRequest(URL, {
     method: `get`,
     callback: renderContacts,
   });
-  deleteControl(btnDel);
-  visibleControl(btnAdd, formOverlay, error);
-  formControl(checkboxtBtn, form, sumModal, formOverlay, tableTbody, error);
+  deleteControl(btnDel, tableTbody);
+  visibleControl(btnAdd, tableTbody);
 };
 
 init();
