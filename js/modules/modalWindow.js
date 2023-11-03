@@ -100,6 +100,13 @@ const showModal = async (tableTbody, data) => {
     disGroup.append(disInput, disLabel, inputDis);
     cellDis.append(labelDis, disGroup);
 
+    const cellPicture = document.createElement(`div`);
+    cellPicture.classList.add(`cell`);
+    cellPicture.classList.add(`preview`);
+    const pictureImg = document.createElement(`img`);
+    pictureImg.classList.add(`IMG`);
+    cellPicture.append(pictureImg);
+
     const cellDescription = document.createElement(`div`);
     cellDescription.classList.add(`cell`);
     cellDescription.classList.add(`description`);
@@ -157,6 +164,7 @@ const showModal = async (tableTbody, data) => {
     inputImg.classList.add(`add-file`);
     inputImg.type = `file`;
     inputImg.id = `file`;
+    inputImg.accept = `image/*`;
     const labelImg = document.createElement(`label`);
     labelImg.classList.add(`add-label`);
     labelImg.setAttribute(`for`, `file`);
@@ -191,7 +199,7 @@ const showModal = async (tableTbody, data) => {
     questionnaire.append(close, blank, title, line, form);
     form.append(specifications, final);
     specifications.append(cellName, cellCategory, cellSize, cellDis,
-        cellDescription, cellAmount, cellPrice, cellImg);
+        cellPicture, cellDescription, cellAmount, cellPrice, cellImg);
     const body = document.querySelector(`body`);
     body.append(overlay);
 
@@ -263,6 +271,20 @@ const showModal = async (tableTbody, data) => {
           e.target.closest(`.checkbox-label`) && checkboxInput.disabled ===
            true ? checkboxInput.disabled = false :
             checkboxInput.disabled = true; checkboxInput.value = '';
+    });
+
+    inputImg.addEventListener(`change`, e => {
+      if (inputImg.files.length > 0) {
+        if (inputImg.files[0].size > 1000000) {
+          const p = document.createElement(`p`);
+          p.classList.add(`red-text`);
+          p.textContent = `изображение не должно превышать размер 1 мб`;
+          cellPicture.append(p);
+        } else {
+          const src = URL.createObjectURL(inputImg.files[0]);
+          pictureImg.src = src;
+        }
+      }
     });
   }
 };
