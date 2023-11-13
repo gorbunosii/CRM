@@ -286,6 +286,28 @@ const showModal = async (tableTbody, data) => {
         }
       }
     });
+    inputName.addEventListener(`input`, () => {
+      inputName.value = inputName.value.replace(/[\w-]/gi, '');
+    });
+    inputCategory.addEventListener(`input`, () => {
+      inputCategory.value = inputCategory.value.replace(/[\w-]/gi, ``);
+    });
+    inputDescription.addEventListener(`input`, () => {
+      inputDescription.value =
+      inputDescription.value.replace(/[\w-]{80,}/gi, ``);
+    });
+    inputSize.addEventListener(`input`, () => {
+      inputSize.value = inputSize.value.replace(/[\w\s]/gi, ``);
+    });
+    inputAmount.addEventListener(`input`, () => {
+      inputAmount.value = inputAmount.value.replace(/[^0-9-]/gi, ``);
+    });
+    inputDis.addEventListener(`input`, () => {
+      inputDis.value = inputDis.value.replace(/[^0-9-]/gi, ``);
+    });
+    inputPrice.addEventListener(`input`, () => {
+      inputPrice.value = inputPrice.value.replace(/[^0-9-]/gi, ``);
+    });
   }
 };
 
