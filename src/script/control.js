@@ -1,5 +1,5 @@
-import moduleStorage from './serviceStorage.js';
-import * as create from './createElements.js';
+import moduleStorage from './serviceStorage';
+import * as create from './createElements';
 
 const {
   setStorage,

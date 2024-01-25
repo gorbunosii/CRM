@@ -1,6 +1,8 @@
-import modulControl from './modules/control.js';
-import {renderPhoneBook, renderContacts} from './modules/render.js';
-import moduleStorage from './modules/serviceStorage.js';
+import modulControl from './script/control';
+import {renderPhoneBook, renderContacts} from './script/render';
+import moduleStorage from './script/serviceStorage';
+
+import './scss/index.scss';
 
 const {
   hoverRow,
