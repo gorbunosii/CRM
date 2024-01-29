@@ -3,12 +3,16 @@ const {createRow} = createElem;
 
 export const renderCRM = () => {
   const btnAdd = document.querySelector(`.table-add`);
+  const btnFilter = document.querySelector(`.button-funnel`);
+  const inputSearch = document.querySelector(`.table-search`);
   const btnDel = document.querySelector(`.table-order`);
   const tableTbody = document.querySelector(`.table-order`);
   const URL = `https://lydian-romantic-litter.glitch.me/api/goods`;
 
   return {
     btnAdd,
+    btnFilter,
+    inputSearch,
     btnDel,
     tableTbody,
     URL,

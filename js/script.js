@@ -5,11 +5,15 @@ const {fetchRequest} = modulStorage;
 
 const {
   deleteControl,
-  visibleControl} = modulControl;
+  visibleControl,
+  inputControl,
+  filterControl} = modulControl;
 
 const init = () => {
   const {
     btnAdd,
+    btnFilter,
+    inputSearch,
     btnDel,
     tableTbody,
     URL,
@@ -21,6 +25,8 @@ const init = () => {
   });
   deleteControl(btnDel, tableTbody);
   visibleControl(btnAdd, tableTbody);
+  inputControl(inputSearch, tableTbody);
+  filterControl(btnFilter, tableTbody);
 };
 
 init();

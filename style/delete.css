@@ -1,0 +1,56 @@
+.overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    z-index: 1;
+}
+
+
+.questionnaire {
+    z-index: 1;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    background: #F2F0F9;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+    padding: 32px 106px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    transition-property: top, opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    text-align: center;
+}
+
+.overlay.is-visible {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .accept {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: #6D5BD0;
+    border-radius: 6px;
+    padding: 10px 25px;
+    border: none;
+}
+
+.accept:first-child {
+margin-right: 50px;
+}
+
+.btn {
+    padding: 30px 0 0 0;
+}

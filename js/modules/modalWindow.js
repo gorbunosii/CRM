@@ -54,11 +54,24 @@ const showModal = async (tableTbody, data) => {
     labelCategory.textContent = `Категория`;
     const inputCategory = document.createElement(`input`);
     inputCategory.classList.add(`input`);
+    inputCategory.setAttribute(`list`, `list`);
     inputCategory.name = `category`;
     inputCategory.id = `Категория`;
     inputCategory.value = data.category || ` `;
     inputCategory.required = true;
-    cellCategory.append(labelCategory, inputCategory);
+    const datalistCategory = document.createElement(`datalist`);
+    datalistCategory.id = `list`;
+    const optionsDatalist = async (category) => {
+      const response = await fetch(`https://lydian-romantic-litter.glitch.me/api/categories`);
+      const data = await response.json();
+      const arrNew = data.map(item => {
+        const datalistOptions = new Option(item);
+        category.append(datalistOptions);
+      });
+      return arrNew;
+    };
+    optionsDatalist(datalistCategory);
+    cellCategory.append(labelCategory, inputCategory, datalistCategory);
 
     const cellSize = document.createElement(`div`);
     cellSize.classList.add(`cell`);
@@ -311,4 +324,50 @@ const showModal = async (tableTbody, data) => {
   }
 };
 
-export default showModal;
+const deleteTrue = async () => {
+  await loadStyle(`style/delete.css`);
+  const overlay = document.createElement(`div`);
+  overlay.classList.add(`overlay`);
+  const questionnaire = document.createElement(`div`);
+  questionnaire.classList.add(`questionnaire`);
+  questionnaire.textContent = `Удалить товар?`;
+  const btn = document.createElement(`div`);
+  btn.classList.add(`btn`);
+  const yesButton = document.createElement(`button`);
+  yesButton.classList.add(`accept`);
+  yesButton.textContent = `Да`;
+  const noButton = document.createElement(`button`);
+  noButton.classList.add(`accept`);
+  noButton.textContent = `Нет`;
+  btn.append(yesButton, noButton);
+  questionnaire.append(btn);
+  overlay.append(questionnaire);
+  const body = document.querySelector(`body`);
+  body.append(overlay);
+
+  overlay.addEventListener(`click`, e => {
+    const target = e.target;
+    if (target === overlay) {
+      overlay.classList.add(`is-visible`);
+      overlay.remove();
+    }
+  });
+
+  return new Promise(resolve => {
+    yesButton.addEventListener(`click`, () => {
+      overlay.classList.add(`is-visible`);
+      overlay.remove();
+      resolve(true);
+    });
+
+    noButton.addEventListener(`click`, () => {
+      overlay.classList.add(`is-visible`);
+      overlay.remove();
+      resolve(false);
+    });
+  });
+};
+
+export default {
+  showModal,
+  deleteTrue};
