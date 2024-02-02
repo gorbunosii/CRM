@@ -246,15 +246,18 @@ const showModal = async (tableTbody, data) => {
       e.preventDefault();
       const formData = new FormData(e.target);
       const newContact = Object.fromEntries(formData);
-
       fetchRequest(`https://lydian-romantic-litter.glitch.me/api/goods`, {
         method: `POST`,
         body: {
-          tite: form.name.value,
-          body: form.description.value,
+          title: form.title.value,
+          category: form.category.value,
+          units: form.units.value,
+          discount: form.discount.value,
+          description: form.description.value,
+          count: form.count.value,
+          price: form.price.value,
         },
         callback(err) {
-          console.log(err);
           if (err) {
             error.classList.add(`is-visible`);
             if (err !== ``) {
@@ -266,7 +269,7 @@ const showModal = async (tableTbody, data) => {
             return;
           }
           form.reset();
-          overlay.classList.remove(`is-visible`);
+          overlay.remove();
           setTableStorage(newContact);
           const obj = {goods: [newContact]};
           renderContacts(null, tableTbody, obj);
@@ -316,7 +319,7 @@ const showModal = async (tableTbody, data) => {
       inputAmount.value = inputAmount.value.replace(/[^0-9-]/gi, ``);
     });
     inputDis.addEventListener(`input`, () => {
-      inputDis.value = inputDis.value.replace(/[^0-9-]/gi, ``);
+      inputDis.value = inputDis.value.replace(/[([A-Za-z0-9-]+]/gi, ``);
     });
     inputPrice.addEventListener(`input`, () => {
       inputPrice.value = inputPrice.value.replace(/[^0-9-]/gi, ``);
